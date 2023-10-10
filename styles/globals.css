@@ -14,3 +14,15 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.d6zlymw {
+  width: 60% !important;
+  border: 1px dashed gray !important;
+  margin: unset !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.d6zlymw::after {
+  text-align: center !important;
+  content: "" !important;
+}

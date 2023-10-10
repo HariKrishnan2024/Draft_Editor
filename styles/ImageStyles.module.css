@@ -1,0 +1,9 @@
+.image {
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+  margin: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex;
+}
