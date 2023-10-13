@@ -15,9 +15,7 @@ import createLinkPlugin from "@draft-js-plugins/anchor";
 import createInlineToolbarPlugin, {
   Separator,
 } from "@draft-js-plugins/inline-toolbar";
-import createSideToolbarPlugin, {
-  BlockTypeSelect,
-} from "@draft-js-plugins/side-toolbar";
+import createSideToolbarPlugin from "@draft-js-plugins/side-toolbar";
 import createImagePlugin from "@draft-js-plugins/image";
 import createVideoPlugin from "@draft-js-plugins/video";
 import createLinkifyPlugin from "@draft-js-plugins/linkify";
@@ -78,6 +76,7 @@ import CustomSideToolbar from "./CustomSideToolbar";
 import { BiImage } from "react-icons/bi";
 import createColorBlockPlugin from "./ColorBlockPlugin";
 import { ImEmbed } from "react-icons/im";
+import BlockTypeSelect from "@draft-js-plugins/side-toolbar";
 
 const linkPlugin = createLinkPlugin({
   theme: LinkStyles,
@@ -161,8 +160,6 @@ function MediumEditor() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [openSideBar, setOpenSideBar] = useState(false);
   const [placeholder, setPlaceholder] = useState("Tell your story...");
-  const [publishModal, setPublishModal] = useState(false);
-  const [publishData, setPublishData] = useState({});
   const data = useSelector((state) => state.editor.blogData);
   const draft = useSelector((state) => state.editor.draft);
   const htmlData = useSelector((state) => state.editor.blogHtmlData);
@@ -274,11 +271,7 @@ function MediumEditor() {
   };
 
   const onPublish = () => {
-    setPublishData({
-      ...publishData,
-      contents: htmlData,
-    });
-    setPublishModal(true);
+    router.push("/renderhtml");
   };
 
   const insertDivider = (editorState) => {

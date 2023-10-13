@@ -15,6 +15,18 @@ a {
   box-sizing: border-box;
 }
 
+.superFancyBlockquote {
+  display: block;
+  color: #999;
+  font-family: "Hoefler Text", Georgia, serif;
+  font-style: italic;
+  text-align: center;
+  font-size: 18px;
+  padding-left: 20px;
+  border-left: 3px solid black;
+  margin-left: 20px;
+}
+
 .d6zlymw {
   width: 60% !important;
   border: 1px dashed gray !important;
