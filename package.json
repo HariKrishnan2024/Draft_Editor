@@ -41,6 +41,8 @@
   },
   "devDependencies": {
     "eslint": "8.49.0",
-    "eslint-config-next": "13.4.19"
+    "eslint-config-next": "13.4.19",
+    "file-loader": "^6.2.0",
+    "next-transpile-modules": "^10.0.0"
   }
 }

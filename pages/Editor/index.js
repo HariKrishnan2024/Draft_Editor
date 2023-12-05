@@ -5,11 +5,6 @@ import {
   convertFromRaw,
   EditorState,
   AtomicBlockUtils,
-  ContentBlock,
-  genKey,
-  CompositeDecorator,
-  Modifier,
-  ContentState,
 } from "draft-js";
 import createLinkPlugin from "@draft-js-plugins/anchor";
 import createInlineToolbarPlugin, {
