@@ -19,7 +19,6 @@ import createBlockDndPlugin from "@draft-js-plugins/drag-n-drop";
 import createIframelyPlugin from "@jimmycode/draft-js-iframely-plugin";
 import createHashtagPlugin from "@draft-js-plugins/hashtag";
 import createFocusPlugin from "@draft-js-plugins/focus";
-// import createColorBlockPlugin from "./Plugins/ColorBlockPlugin";
 import createAlignmentPlugin from "@draft-js-plugins/alignment";
 import createResizeablePlugin from "@draft-js-plugins/resizeable";
 import createTextAlignmentPlugin from "@draft-js-plugins/text-alignment";
@@ -398,8 +397,6 @@ function MediumEditor() {
               <HeadlineThreeButton {...externalProps} />
               <UnorderedListButton {...externalProps} />
               <OrderedListButton {...externalProps} />
-              {/* <CodeBlockButton {...externalProps} /> */}
-              {/* <textAlignmentPlugin.TextAlignment {...externalProps} /> */}
             </div>
           )}
         </InlineToolbar>
