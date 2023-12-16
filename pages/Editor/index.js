@@ -51,7 +51,7 @@ import "@draft-js-plugins/linkify/lib/plugin.css";
 import BlockTypeSelect from "@draft-js-plugins/side-toolbar";
 import "@draft-js-plugins/side-toolbar/lib/plugin.css";
 import "@jimmycode/draft-js-iframely-plugin/lib/plugin.css";
-import { Button, Upload } from "antd";
+import { Button, Upload, message } from "antd";
 import { RichUtils } from "draft-js";
 import _ from "lodash";
 import moment from "moment";
@@ -262,6 +262,7 @@ function MediumEditor() {
 
   const handleSaveDraft = async () => {
     dispatch(addDraftData(data));
+    message.success("Draft Saved Successfully");
   };
 
   const onPublish = () => {

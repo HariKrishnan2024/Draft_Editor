@@ -33,7 +33,7 @@ export const toHTML = (state) => {
           <hr
             style={{
               width: "60%",
-              border: "2px dashed gray",
+              border: "1px dashed gray",
               marginLeft: "auto",
               marginRight: "auto",
             }}

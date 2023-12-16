@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 
 function RenderHtml() {
   const htmlData = useSelector((state) => state.editor.blogHtmlData);
+  console.log(htmlData);
   return (
     <div
       dangerouslySetInnerHTML={{
