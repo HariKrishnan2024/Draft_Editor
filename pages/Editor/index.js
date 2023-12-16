@@ -1,76 +1,76 @@
-import "draft-js/dist/Draft.css";
-import { useEffect, useRef, useState } from "react";
-import {
-  convertToRaw,
-  convertFromRaw,
-  EditorState,
-  AtomicBlockUtils,
-} from "draft-js";
+import createAlignmentPlugin from "@draft-js-plugins/alignment";
 import createLinkPlugin from "@draft-js-plugins/anchor";
+import createDividerPlugin from "@draft-js-plugins/divider";
+import createBlockDndPlugin from "@draft-js-plugins/drag-n-drop";
+import createFocusPlugin from "@draft-js-plugins/focus";
+import createHashtagPlugin from "@draft-js-plugins/hashtag";
+import createImagePlugin from "@draft-js-plugins/image";
 import createInlineToolbarPlugin, {
   Separator,
 } from "@draft-js-plugins/inline-toolbar";
-import createSideToolbarPlugin from "@draft-js-plugins/side-toolbar";
-import createImagePlugin from "@draft-js-plugins/image";
-import createVideoPlugin from "@draft-js-plugins/video";
 import createLinkifyPlugin from "@draft-js-plugins/linkify";
-import createDividerPlugin from "@draft-js-plugins/divider";
-import createBlockDndPlugin from "@draft-js-plugins/drag-n-drop";
-import createIframelyPlugin from "@jimmycode/draft-js-iframely-plugin";
-import createHashtagPlugin from "@draft-js-plugins/hashtag";
-import createFocusPlugin from "@draft-js-plugins/focus";
-import createAlignmentPlugin from "@draft-js-plugins/alignment";
 import createResizeablePlugin from "@draft-js-plugins/resizeable";
+import createSideToolbarPlugin from "@draft-js-plugins/side-toolbar";
 import createTextAlignmentPlugin from "@draft-js-plugins/text-alignment";
+import createVideoPlugin from "@draft-js-plugins/video";
+import createIframelyPlugin from "@jimmycode/draft-js-iframely-plugin";
+import {
+  AtomicBlockUtils,
+  EditorState,
+  convertFromRaw,
+  convertToRaw,
+} from "draft-js";
+import "draft-js/dist/Draft.css";
+import { useEffect, useRef, useState } from "react";
 
-import Editor, { composeDecorators } from "@draft-js-plugins/editor";
-import {
-  ItalicButton,
-  BoldButton,
-  UnderlineButton,
-  HeadlineOneButton,
-  HeadlineTwoButton,
-  HeadlineThreeButton,
-  UnorderedListButton,
-  OrderedListButton,
-  BlockquoteButton,
-} from "@draft-js-plugins/buttons";
-import classNames from "../../styles/blog.module.css";
-import LinkStyles from "../../styles/LinkStyles.module.css";
-import ImageStyles from "../../styles/ImageStyles.module.css";
-import alignmentStyles from "../../styles/alignmentStyles.module.css";
-import "@draft-js-plugins/inline-toolbar/lib/plugin.css";
-import "@draft-js-plugins/side-toolbar/lib/plugin.css";
-import "@draft-js-plugins/image/lib/plugin.css";
-import "@draft-js-plugins/anchor/lib/plugin.css";
-import "@draft-js-plugins/linkify/lib/plugin.css";
-import "@draft-js-plugins/divider/lib/plugin.css";
-import "@draft-js-plugins/hashtag/lib/plugin.css";
-import "@draft-js-plugins/alignment/lib/plugin.css";
-import "@draft-js-plugins/focus/lib/plugin.css";
-import "@jimmycode/draft-js-iframely-plugin/lib/plugin.css";
-import { Button, message, Upload } from "antd";
-import { RichUtils } from "draft-js";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addDraftData,
-  addHtmlData,
-  setBlogData,
-} from "../../store/actions/blog";
 import {
   ArrowLeftOutlined,
   DashOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
-import _ from "lodash";
-import { useRouter } from "next/router";
-import { toHTML } from "../../common";
-import moment from "moment";
-import CustomSideToolbar from "./CustomSideToolbar";
-import { BiImage } from "react-icons/bi";
-import createColorBlockPlugin from "./ColorBlockPlugin";
-import { ImEmbed } from "react-icons/im";
+import "@draft-js-plugins/alignment/lib/plugin.css";
+import "@draft-js-plugins/anchor/lib/plugin.css";
+import {
+  BlockquoteButton,
+  BoldButton,
+  HeadlineOneButton,
+  HeadlineThreeButton,
+  HeadlineTwoButton,
+  ItalicButton,
+  OrderedListButton,
+  UnderlineButton,
+  UnorderedListButton,
+} from "@draft-js-plugins/buttons";
+import "@draft-js-plugins/divider/lib/plugin.css";
+import Editor, { composeDecorators } from "@draft-js-plugins/editor";
+import "@draft-js-plugins/focus/lib/plugin.css";
+import "@draft-js-plugins/hashtag/lib/plugin.css";
+import "@draft-js-plugins/image/lib/plugin.css";
+import "@draft-js-plugins/inline-toolbar/lib/plugin.css";
+import "@draft-js-plugins/linkify/lib/plugin.css";
 import BlockTypeSelect from "@draft-js-plugins/side-toolbar";
+import "@draft-js-plugins/side-toolbar/lib/plugin.css";
+import "@jimmycode/draft-js-iframely-plugin/lib/plugin.css";
+import { Button, Upload } from "antd";
+import { RichUtils } from "draft-js";
+import _ from "lodash";
+import moment from "moment";
+import { useRouter } from "next/router";
+import { BiImage } from "react-icons/bi";
+import { ImEmbed } from "react-icons/im";
+import { useDispatch, useSelector } from "react-redux";
+import { toHTML } from "../../common";
+import {
+  addDraftData,
+  addHtmlData,
+  setBlogData,
+} from "../../store/actions/blog";
+import ImageStyles from "../../styles/ImageStyles.module.css";
+import LinkStyles from "../../styles/LinkStyles.module.css";
+import alignmentStyles from "../../styles/alignmentStyles.module.css";
+import classNames from "../../styles/blog.module.css";
+import createColorBlockPlugin from "./ColorBlockPlugin";
+import CustomSideToolbar from "./CustomSideToolbar";
 
 const linkPlugin = createLinkPlugin({
   theme: LinkStyles,
@@ -181,7 +181,7 @@ function MediumEditor() {
       draft?.draft_contents?.blocks[0].type === "image");
 
   useEffect(() => {
-    if (draft) {
+    if (draft && Object.keys(draft).length > 0) {
       setEditorState(EditorState.createWithContent(convertFromRaw(draft)));
     } else {
       setEditorState(EditorState.createEmpty());
